@@ -1,0 +1,79 @@
+.resource-detail {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1, h2 {
+    text-align: center;
+    color: #0606a4;
+    margin-bottom: 20px;
+}
+
+.resource-detail h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.resource-detail .cover-picture {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #0606a4;
+    margin-bottom: 20px;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.details-table th, .details-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.details-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.details-table .price {
+    color: #900909;
+    font-weight: bold;
+}
+
+.btn {
+    background: #0606a4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    display: block;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+.btn:hover {
+    background: #900909;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn:disabled {
+    background: #888;
+}
+
+.message {
+    color: #900909;
+    margin-top: 20px;
+}

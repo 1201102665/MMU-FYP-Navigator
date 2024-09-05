@@ -1,0 +1,117 @@
+# MMU Resources Web Application
+
+## Team Members
+--------------------------------------------------------------------------------------------------
+| Name                         | Student ID |              Email            | Lecture | Tutorial |
+|------------------------------|------------|-------------------------------|---------|----------|
+| Youssef Fathy Fathy Mahrous  | 1221302092 | 1221302092@student.mmu.edu.my |  TC2L   |   TT4L   |
+| Abdullah Omar Hamad Bin Afeef| 1211306604 | 1211306604@student.mmu.edu.my |  TC2L   |   TT4L   |
+| AL BARAA AL REFAI            | 1221301987 | 1221301987@student.mmu.edu.my |  TC2L   |   TT4L   |
+| Asim Adel Ahmed Maroof       | 1211306893 | 1211306893@student.mmu.edu.my |  TC2L   |   TT3L   |
+--------------------------------------------------------------------------------------------------
+
+## Project Overview
+
+The MMU Resources website is designed to facilitate the management and distribution
+ of final year project (FYP) resources and help the students to get some monye for their work. It includes 
+ functionalities for both regular users and administrators, providing a 
+ comprehensive platform for accessing, uploading, managing, and purchasing FYP resources. 
+ The application is built using PHP for backend processing, with a MySQL database for data storage and management
+ and some css and js for the friendly user interface.
+
+## Functionality Overview
+
+### User Functionality
+
+1. Home Page: 
+   - Upon logging in, users are redirected to the home page where they can view a list of available FYP resources.
+   - Resources can be filtered by title and faculty type (e.g., FCI, FOM, FCM, FOE, FAC).
+   - Each resource displays the title, description, price, and faculty.
+
+2. Resource Management:
+   - Users can add resources to their shopping cart.
+   - View detailed information about each resource.
+   - Upload new resources, which require admin approval before becoming visible to others.
+   - View and manage their uploaded resources.
+   - View and Download their purchased resources
+
+3. Feedback and FAQ:
+   - Users can submit questions via a FAQ system.
+   - Provide feedback on the platform.
+
+4. Profile Management:
+   - Users can view and edit their profile information, including their username, email, profile picture and change the password.
+
+5. Announcements:
+   - Users can view announcements posted by the admin.
+
+6. Shopping Cart:
+   - Users can add and remove items form their cart, view the cart, and proceed to checkout and make the payment.
+
+### Admin Functionality
+
+1. Admin Panel: 
+   - Admins are redirected to the admin panel upon logging in. This panel includes pages to manage various aspects of the application.
+
+2. Resource Approval and Management:
+   - Admins can approve, reject, edit, and view the resources uploaded by users.
+   - Manage accepted resources, including editing or deleting them.
+
+3. Announcements:
+   - Admins can create and delete and manage announcements.
+
+4. Feedback Management:
+   - Admins can view and user feedback.
+
+5. FAQ Management:
+   - Admins can manage FAQs, including adding, editing, and deleting FAQs submitted by users.
+
+## Navigation Guide
+
+1. Home Page: 
+   - After logging in, users are redirected to the home page (home.php for users, adminpanel.php for admins).
+
+2. Viewing Resources: 
+   - Users can browse resources on the home page. Clicking on a resource title leads to the detailed view (resource_detail.php).
+
+3. Uploading Resources: 
+   - Users can upload new resources via the upload_resource.php page.
+
+4. Shopping Cart: 
+   - The cart can be accessed via the cart icon in the header, leading to cart.php.
+
+5. Announcements: 
+   - Accessible via the announcements.php page for users. Admins manage their announcements via my_announcements.php.
+
+6. Profile Management: 
+   - Users can view and edit their profile on the profile.php page.
+
+7. Feedback and FAQ: 
+   - Users can submit feedback through feedback.php and ask questions via faq_user.php. Admins manage these via manage_feedback.php and faq_admin.php.
+
+## Additional Features
+
+1. Wave Animation in Footer: 
+   - The footer includes a wave animation for visual appeal.
+
+2. Responsive Design: 
+   - The application is designed to be responsive, ensuring usability across different devices and screen sizes.
+
+3. Session Management: 
+   - Ensures secure access to user-specific and admin-specific functionalities.
+
+4. Prepared Statements: 
+   - Utilized throughout the application to prevent SQL injection attacks.
+
+5. Error Handling: 
+   - Includes mechanisms for handling various errors and providing user-friendly messages.
+
+## Conclusion
+
+The MMU Resources web application provides a robust platform 
+for managing FYP resources,
+with distinct functionalities for users and admins.
+Users can easily access, filter, and purchase resources,
+hile admins have comprehensive control over the content and user interactions within the platform.
+The application ensures security, usability, and a visually appealing interface,
+ making it a valuable tool for managing final year project resources.

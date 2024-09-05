@@ -1,0 +1,60 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../design/wallpaper1.jpeg");
+    margin: 0;
+    padding: 0;
+    background-color: #f8f6f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Ensure the body takes the full height of the viewport */
+}
+
+.welcome-content {
+    text-align: center;
+    background-color: #ffffffa2;
+    padding: 100px;
+    /* Increased padding for a bigger box */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #24148c;
+    font-size: 48px;
+    /* Larger font size */
+    margin-bottom: 30px;
+    /* Increased margin */
+}
+
+p {
+    font-size: 24px;
+    /* Larger font size */
+    color: #333;
+    margin-bottom: 40px;
+    /* Increased margin */
+}
+
+.btn {
+    background: #24148c;
+    color: #ffffff;
+    padding: 15px 30px;
+    /* Larger padding */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    /* Larger font size */
+    font-weight: bold;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    background: #6A1B9A;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
