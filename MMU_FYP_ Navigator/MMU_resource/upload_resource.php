@@ -15,6 +15,14 @@ $faculties = $stmt->fetchAll();
 
 $error = '';
 
+// Ensure target directories exist and create them if they don't
+if (!is_dir('resources')) {
+    mkdir('resources', 0777, true);
+}
+if (!is_dir('coverPictures')) {
+    mkdir('coverPictures', 0777, true);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
     // Sanitize inputs to prevent XSS attacks
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
@@ -45,16 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
         $cover_target_dir = "coverPictures/";
         $cover_target_file = $cover_target_dir . basename($cover_picture["name"]);
 
-        if (move_uploaded_file($file_path["tmp_name"], $target_file) && move_uploaded_file($cover_picture["tmp_name"], $cover_target_file)) {
-            // Insert new resource into the database using prepared statements to prevent SQL injection
-            $stmt = $pdo->prepare("INSERT INTO Resources (title, description, price, file_path, cover_picture, faculty_id, user_id, pending_acceptance) VALUES (?, ?, ?, ?, ?, ?, ?, 1)");
-            $stmt->execute([$title, $description, $price, $target_file, $cover_target_file, $faculty_id, $_SESSION['user_id']]);
+        // Check if file exists before moving
+        if (file_exists($file_path["tmp_name"]) && file_exists($cover_picture["tmp_name"])) {
+            if (move_uploaded_file($file_path["tmp_name"], $target_file) && move_uploaded_file($cover_picture["tmp_name"], $cover_target_file)) {
+                // Insert new resource into the database using prepared statements to prevent SQL injection
+                $stmt = $pdo->prepare("INSERT INTO Resources (title, description, price, file_path, cover_picture, faculty_id, user_id, pending_acceptance) VALUES (?, ?, ?, ?, ?, ?, ?, 1)");
+                $stmt->execute([$title, $description, $price, $target_file, $cover_target_file, $faculty_id, $_SESSION['user_id']]);
 
-            $_SESSION['success'] = 'Resource uploaded successfully.';
-            header("Location: home.php"); // Redirect to the home page after successful upload
-            exit();
+                $_SESSION['success'] = 'Resource uploaded successfully.';
+                header("Location: home.php"); // Redirect to the home page after successful upload
+                exit();
+            } else {
+                $error = 'Failed to upload files'; // error message if file upload fails
+            }
         } else {
-            $error = 'Failed to upload files'; // Set error message if file upload fails
+            $error = 'Temporary files do not exist, cannot move files';
         }
     }
     // Store file names in session if there's an error
