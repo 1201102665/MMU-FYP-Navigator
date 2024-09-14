@@ -1,0 +1,177 @@
+button,
+.btn,
+.btn-table,
+.btn-cancel,
+.btn-cancel-table {
+    text-decoration: none;
+}
+
+/* Common Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.profile-container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.profile-sidebar {
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.profile-pic-container {
+    position: relative;
+    margin-bottom: 10px; 
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.svg-container {
+    position: relative;
+    top: -30px;
+}
+
+.custom-file-upload {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #0606a4;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin-top: -20px; 
+    margin-left: 80px; 
+    position: relative;
+}
+
+.custom-file-upload svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.remove-photo-btn {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+    display: block; 
+    width: fit-content;
+    margin: 20px auto 10px; 
+}
+
+.remove-photo-btn:hover {
+    background: #d32f2f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info h2 {
+    color: #0606a4;
+    margin: 10px 0 5px;
+}
+
+.profile-info p {
+    color: #0606a4;
+    font-weight: bold;
+}
+
+.profile-main {
+    width: 70%;
+    padding: 20px;
+}
+
+.profile-main h2 {
+    text-align: center;
+    color: #0606a4;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0606a4;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background: #0606a4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #900909;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cancel {
+    background: #900909;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+}
+
+.btn-cancel:hover {
+    background: #900909;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
