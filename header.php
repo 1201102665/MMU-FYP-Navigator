@@ -104,6 +104,10 @@ if (isset($_SESSION['user_id'])) {
                                 <li class="nav-item">
                                     <a href="faq_admin.php" class="nav-link text-primary <?php echo $current_page == 'faq_admin.php' ? 'active' : ''; ?>">Manage FAQs</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="view_contact_requests.php" class="nav-link text-primary <?php echo $current_page == 'view_contact_requests.php' ? 'active' : ''; ?>">Contact Requests</a>
+                                </li>
+                
                             <?php endif; ?>
                         </ul>
                     </div>

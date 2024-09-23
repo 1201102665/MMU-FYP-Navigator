@@ -8,10 +8,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icons (for login/signup icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap">
+
   <style>
-   <style>
     body {
-      background-color: #e3f2fd;
+      background-color: #f5f8fa;
       font-family: 'Arial', sans-serif;
     }
 
@@ -60,13 +61,13 @@
     .picture-section {
       position: relative;
       height: 100vh;
-      background-image: url('design/web-banner-campus-melaka-mobile.jpg');
+      background-image: url('design/welcome.png');
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: black;
       text-align: center;
       padding: 0 20px;
     }
@@ -84,6 +85,60 @@
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     }
 
+    /* Divider Section */
+    .divider {
+      height: 5px;
+      background: #0d6efd;
+      border-radius: 50px;
+      margin: 50px 0;
+    }
+
+    .divider::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 80px;
+      height: 5px;
+      background: #f08c00;
+      border-radius: 50px;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0d6efd;
+      margin-bottom: 20px;
+    }
+
+    /* Section Separators */
+    .section-divider {
+      margin: 50px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-divider h2 {
+      display: inline-block;
+      background-color: #f7f9fc;
+      padding: 0 20px;
+      position: relative;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ddd;
+      z-index: -1;
+    }
     /* Form container styling */
     .form-container {
       position: fixed;
@@ -130,7 +185,12 @@
       color: #333;
       cursor: pointer;
     }
-
+    h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
     .form-card h2 {
       margin-bottom: 30px;
       color: #0d6efd;
@@ -158,14 +218,12 @@
       background-color: #0d6efd;
       color: white;
       text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
+      padding: 0px;
+      position: sticky;
+      bottom: 0px;
+      margin:0px;
       width: 100%;
-    }
-
-    .main-content {
-      padding: 40px;
+      
     }
 
     /* Lecturers Section */
@@ -214,14 +272,6 @@
       padding: 50px 0;
     }
 
-    .lecturer-section h2 {
-      margin-bottom: 50px;
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #0d6efd;
-    }
-
     /* Contact Section */
     .contact-section {
       padding: 50px 0;
@@ -264,6 +314,15 @@
     .contact-form .btn-primary:hover {
       background-color: #0048cc;
     }
+
+    /* Carousel Images */
+    .carousel-item img {
+      max-width: 80%;
+      max-height: 500px;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+
   </style>
 </head>
 <body>
@@ -309,6 +368,9 @@
       <p>Empowering MMU University students by providing easy access to academic resources and fostering collaboration for academic excellence.</p>
     </div>
   </div>
+
+  <!-- Divider between sections -->
+  <div class="section-divider"><h2>Last Events</h2></div>
 
   <!-- Main Content -->
   <div class="form-container" id="form-container" onclick="hideForm(event)">
@@ -357,12 +419,10 @@
     </div>
   </div>
 
-
-
   <div class="main-content" id="events-content">
     <!-- Carousel Section -->
     <div class="container my-5">
-      <h2 class="text-center mb-4">Last Events</h2>
+      
       <div id="eventsCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#eventsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -396,32 +456,12 @@
       </div>
     </div>
 
-    <!-- Announcements Section -->
-    <div class="container announcements-section">
-      <h2 class="text-center mb-4">Announcements</h2>
-      <div class="alert alert-primary d-flex align-items-center" role="alert">
-        <i class="bi bi-megaphone-fill me-2"></i>
-        <div>
-          Important Update: Exam schedules have been revised for the upcoming term.
-        </div>
-      </div>
-      <div class="alert alert-warning d-flex align-items-center" role="alert">
-        <i class="bi bi-bell-fill me-2"></i>
-        <div>
-          New Announcement: The library will now open at 8:00 AM daily.
-        </div>
-      </div>
-      <div class="alert alert-success d-flex align-items-center" role="alert">
-        <i class="bi bi-check-circle-fill me-2"></i>
-        <div>
-          New Update: Additional study resources have been uploaded to the platform.
-        </div>
-      </div>
-    </div>
+    <!-- Divider between sections -->
+    <div class="section-divider"><h2>Our Professors</h2></div>
 
     <!-- Lecturers Section -->
     <div class="lecturer-section container" id="lecturers-section">
-      <h2>Our Professors</h2>
+      <h2 class="section-title"></h2>
       <div class="row">
         <!-- Lecturer 1 -->
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -450,66 +490,14 @@
             <p><strong>Email:</strong> alanwatts@example.com<br><strong>Phone:</strong> +1122334455</p>
           </div>
         </div>
-        <!-- Lecturer 4 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 4">
-            <h5>Prof. Clara Li</h5>
-            <p>Software Engineering expert focusing on agile methodologies.</p>
-            <p><strong>Email:</strong> clarali@example.com<br><strong>Phone:</strong> +9988776655</p>
-          </div>
-        </div>
-        <!-- Lecturer 5 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 5">
-            <h5>Prof. Michael Zhang</h5>
-            <p>Cloud Computing and DevOps researcher.</p>
-            <p><strong>Email:</strong> michaelzhang@example.com<br><strong>Phone:</strong> +6677889900</p>
-          </div>
-        </div>
-        <!-- Lecturer 6 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 6">
-            <h5>Prof. Sarah Brown</h5>
-            <p>Specialist in Information Security and Privacy.</p>
-            <p><strong>Email:</strong> sarahbrown@example.com<br><strong>Phone:</strong> +4455667788</p>
-          </div>
-        </div>
-        <!-- Lecturer 7 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 7">
-            <h5>Prof. William Green</h5>
-            <p>Expert in Software Development and Agile Practices.</p>
-            <p><strong>Email:</strong> williamgreen@example.com<br><strong>Phone:</strong> +1122558899</p>
-          </div>
-        </div>
-        <!-- Lecturer 8 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 8">
-            <h5>Prof. Emma White</h5>
-            <p>Specialist in Database Systems and Data Modeling.</p>
-            <p><strong>Email:</strong> emmawhite@example.com<br><strong>Phone:</strong> +6677884455</p>
-          </div>
-        </div>
-        <!-- Lecturer 9 -->
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 9">
-            <h5>Prof. David Black</h5>
-            <p>Network Security and Ethical Hacking expert.</p>
-            <p><strong>Email:</strong> davidblack@example.com<br><strong>Phone:</strong> +3344556677</p>
-          </div>
-        </div>
       </div>
     </div>
 
+    <!-- Divider between sections -->
+    <div class="section-divider"><h2>Contact Us</h2></div>
+
     <!-- Contact Section -->
     <div class="contact-section container" id="contact-section">
-      <h2>Contact Us</h2>
       <div class="row">
         <!-- Image on the left -->
         <div class="col-lg-6 col-md-12">
@@ -587,9 +575,11 @@
     function scrollToContact() {
       document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
     }
+    
     function scrollToevents() {
       document.getElementById('events-content').scrollIntoView({ behavior: 'smooth' });
     }
+
     function hideForm(event) {
       document.getElementById('form-container').classList.remove('active');
     }

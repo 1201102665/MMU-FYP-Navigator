@@ -44,6 +44,12 @@ if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']){
                         <h2>Manage FAQs</h2>
                     </div>
                 </a>
+                <a href="view_contact_requests.php" class="admin-card">
+    <div class="card-content">
+        <span class="emoji">📧</span>
+        <h2>View Contact Requests</h2>
+    </div>
+</a>
             </div>
         </div>
     </div>
