@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -317,10 +320,180 @@
 
     /* Carousel Images */
     .carousel-item img {
-      max-width: 80%;
-      max-height: 500px;
-      object-fit: cover;
+      max-width: 200%;
+      height: 700px;
+      object-fit: contain;
       margin: 0 auto;
+    }
+
+    body {
+      background-color: #f5f8fa;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .navbar {
+      background-color: #0d6efd;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1030;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+      transform: scale(1.1);
+    }
+
+    .btn-signup {
+      background-color: #f08c00;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-left: 10px;
+    }
+
+    .btn-signup:hover {
+      background-color: #ff9f1a;
+    }
+
+    /* Video Background Section */
+    .video-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .video-section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for highlighting */
+      z-index: 1;
+    }
+
+    .video-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-content h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-content p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 20px auto 0;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Divider Section */
+    .divider {
+      height: 5px;
+      background: #0d6efd;
+      border-radius: 50px;
+      margin: 50px 0;
+    }
+
+    .divider::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 80px;
+      height: 5px;
+      background: #f08c00;
+      border-radius: 50px;
+    }
+    .highlight {
+      background-color: rgba(85, 85, 85, 0.5); /* 30% transparent grey background */
+      padding: 10px;
+      border-radius: 5px;
+    }
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0d6efd;
+      margin-bottom: 20px;
+    }
+
+    /* Section Separators */
+    .section-divider {
+      margin: 50px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-divider h2 {
+      display: inline-block;
+      background-color: #f7f9fc;
+      padding: 0 20px;
+      position: relative;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ddd;
+      z-index: -1;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #0d6efd;
+      color: white;
+      text-align: center;
+      padding: 0px;
+      position: sticky;
+      bottom: 0px;
+      margin: 0px;
+      width: 100%;
     }
 
   </style>
@@ -360,14 +533,34 @@
       </div>
     </div>
   </nav>
+  <?php if (isset($_SESSION['error'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error: </strong> <?= htmlspecialchars($_SESSION['error']); ?>
+        <button type="button" class="btn-close" aria-label="Close" onclick="this.parentElement.style.display='none';"></button>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
 
-  <!-- Big Picture Section -->
-  <div class="picture-section" id="home-section">
-    <div>
-      <h1>Welcome to MMU FYP Navigator</h1>
-      <p>Empowering MMU University students by providing easy access to academic resources and fostering collaboration for academic excellence.</p>
+<?php if (isset($_SESSION['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success: </strong> <?= htmlspecialchars($_SESSION['success']); ?>
+        <button type="button" class="btn-close" aria-label="Close" onclick="this.parentElement.style.display='none';"></button>
+    </div>
+    <?php unset($_SESSION['success']); ?>
+<?php endif; ?>
+
+  <div class="video-section">
+    <video autoplay muted loop>
+      <source src="design/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+    <div class="video-content">
+      <h1 class="highlight">Welcome to MMU FYP Navigator</h1>
+      <p class="highlight">Empowering MMU University students by providing easy access to academic resources and fostering collaboration for academic excellence.</p>
     </div>
   </div>
+
 
   <!-- Divider between sections -->
   <div class="section-divider"><h2>Last Events</h2></div>
@@ -446,11 +639,11 @@
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#eventsCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
           <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#eventsCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
@@ -475,10 +668,10 @@
         <!-- Lecturer 2 -->
         <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 2">
-            <h5>Prof. Jane Smith</h5>
-            <p>Specialist in Cybersecurity and Blockchain technologies.</p>
-            <p><strong>Email:</strong> janesmith@example.com<br><strong>Phone:</strong> +987654321</p>
+            <img src="design/1991015769.png" alt="Lecturer 3">
+            <h5>Prof. Alan Watts</h5>
+            <p>Data Science and Analytics expert, passionate about big data.</p>
+            <p><strong>Email:</strong> alanwatts@example.com<br><strong>Phone:</strong> +1122334455</p>
           </div>
         </div>
         <!-- Lecturer 3 -->
@@ -543,8 +736,11 @@
     <p>&copy; 2024 MMU FYP Navigator. All Rights Reserved.</p>
   </footer>
 
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+
 
   <!-- Custom JS for form switching and smooth scrolling -->
   <script>
@@ -556,17 +752,28 @@
       document.getElementById('form-container').classList.add('hidden');
     }
 
+
     function showForm(type) {
-      document.getElementById('form-container').classList.add('active');
+      const formContainer = document.getElementById('form-container');
+      const signinForm = document.getElementById('signin-form');
+      const signupForm = document.getElementById('signup-form');
+
+      formContainer.classList.add('active');
 
       if (type === 'signin') {
-        document.getElementById('signin-form').style.display = 'block';
-        document.getElementById('signup-form').style.display = 'none';
+        signinForm.style.display = 'block';
+        signupForm.style.display = 'none';
       } else if (type === 'signup') {
-        document.getElementById('signin-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'block';
+        signinForm.style.display = 'none';
+        signupForm.style.display = 'block';
       }
     }
+
+    function hideForm() {
+      document.getElementById('form-container').classList.remove('active');
+    }
+  
+
 
     function scrollToLecturers() {
       document.getElementById('lecturers-section').scrollIntoView({ behavior: 'smooth' });
@@ -583,6 +790,8 @@
     function hideForm(event) {
       document.getElementById('form-container').classList.remove('active');
     }
+    
+ 
 
   </script>
 </body>

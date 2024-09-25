@@ -25,14 +25,14 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #4b46df;
         }
 
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background: #fff;
+            background: #1165ba;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 40px;
@@ -63,7 +63,7 @@
 
         .btn, .btn-table, .btn-cancel, .btn-cancel-table {
             background: #4A148C;
-            color: #fff;
+            color: #5549a1;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;

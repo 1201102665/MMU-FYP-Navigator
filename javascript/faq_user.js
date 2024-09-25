@@ -6,10 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
         faqItems.forEach(item => {
             item.addEventListener('click', () => {
                 const answer = item.querySelector('.answer');
+                
+                // Check if answer is already expanded
                 if (answer.classList.contains('show')) {
-                    answer.style.maxHeight = null;
+                    answer.style.maxHeight = 200;
                     answer.classList.remove('show');
                 } else {
+                    // Use scrollHeight to expand to the full height of the answer
                     answer.style.maxHeight = answer.scrollHeight + 'px';
                     answer.classList.add('show');
                 }

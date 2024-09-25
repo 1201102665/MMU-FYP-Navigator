@@ -1,12 +1,21 @@
-.container {
-    max-width: 800px; 
-    margin: 0 auto; 
-    padding: 20px; /* Add some padding */
-    background-color: #fff; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
-h1, h2 {
+
+.container {
+    width: 100%;
+    max-width: 800px; /* Smaller container */
+    margin: 20px auto; /* Center horizontally with some margin */
+    padding: 20px;
+    background-color: #4257e1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
     text-align: center;
     color: #0606a4;
     margin-bottom: 20px;
@@ -18,24 +27,24 @@ h1, h2 {
 
 .form-group label {
     display: block;
-    margin-bottom: 10px;
     font-weight: bold;
     color: #0606a4;
+    margin-bottom: 5px;
 }
 
 .form-group input[type="text"],
 .form-group textarea,
 .form-group select {
-    width: 100%; /* Full width */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
 }
 
 textarea {
-    resize: vertical; 
+    resize: vertical;
 }
 
 button.btn {
@@ -44,26 +53,27 @@ button.btn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
 button.btn:hover {
-    background: #610606; /* Darker red on hover */
+    background: #610606;
 }
 
 .drag-drop-container {
-    border: 2px dashed #0606a4; 
+    border: 2px dashed #0606a4;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     margin-bottom: 20px;
     position: relative;
+    transition: background-color 0.3s ease;
 }
 
 .drag-drop-container input[type="file"] {
-    display: none; 
+    display: none;
 }
 
 .drag-drop-container .browse-btn {
@@ -75,30 +85,41 @@ button.btn:hover {
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
 .drag-drop-container .browse-btn:hover {
-    background: #900909; 
+    background: #900909;
 }
 
 .drag-drop-container .upload-icon {
-    width: 64px;
-    height: 64px;
+    width: 48px; /* Smaller icon */
+    height: 48px; /* Smaller icon */
     display: block;
-    margin: 0 auto 10px; 
+    margin: 0 auto 10px;
 }
 
 .drag-drop-container:hover {
-    background-color: #f9f9f9; /* Light gray background on hover */
+    background-color: #f9f9f9;
 }
 
 .drag-drop-container p {
-    font-size: 18px;
+    font-size: 16px;
     color: #0606a4;
 }
 
 .file-name {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 14px;
     color: #0606a4;
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
 }

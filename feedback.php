@@ -50,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
                 <label for="feedback_text">Your Feedback:</label>
                 <textarea id="feedback_text" name="feedback_text" required></textarea> <!-- Textarea for the user to enter their feedback -->
             </div>
-            <button type="submit" class="btn">Submit Feedback</button> 
+            <div style="text-align: center;">
+                <button type="submit" class="btn" style="background-color: blue; color: white;">Submit Feedback</button>
+            </div></div>
         </form>
     </div>
 </body>

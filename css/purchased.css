@@ -20,8 +20,8 @@ table th, table td {
 }
 
 table th {
-    background-color: green;
-    color: #fff;
+    background-color: rgb(49, 52, 215);
+    color: #fafaff;
     font-weight: bold;
 }
 

@@ -4,18 +4,18 @@
     list-style-type: none;
     padding: 0;
 }
-
 .faq-list li {
     background: #fff;
     color: #4A148C;
     margin: 10px 0;
-    padding: 10px;
+    padding: 20px; /* Increased padding for more height */
     border: 1px solid #4A148C;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+
 
 .faq-list li:hover {
     background: #f4f4f4;
@@ -31,18 +31,14 @@
 .faq-list .answer {
     max-height: 0;
     overflow: hidden;
-    background: #f9f9f9;
-    padding: 0 10px;
-    border-top: 1px solid #4A148C;
-    border-radius: 0 0 5px 5px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    opacity: 0;
-    font-weight: normal;
+    transition: max-height 0.3s ease; /* Smooth transition effect */
+    padding: 0 10px; /* Optional padding to make it look better */
+    background-color: #f9f9f9; /* Optional background color */
 }
 
+/* When the answer is shown, ensure proper padding and expansion */
 .faq-list .answer.show {
-    max-height: 200px;
-    padding: 10px;
-    opacity: 1;
+    padding: 10px 10px; /* Add padding when the answer is shown */
+    background-color: #f0f0f0; /* Optional background color change */
+
 }

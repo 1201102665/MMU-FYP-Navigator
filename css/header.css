@@ -5,10 +5,8 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    background-color: #0606a4; 
-    color: #d1bb9b;
-    padding: 20px 0;
+.navbar-nav .nav-link {
+    color: white !important;
 }
 
 .navbar {
@@ -38,16 +36,13 @@ nav ul li {
     display: inline-block;
     margin: 0 15px;
 }
+
 /* Importing Google Fonts in head */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* Apply Poppins font to nav links */
 .navbar-nav .nav-link {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500; /* Medium weight for readability */
-    font-size: 1rem; /* Adjust font size */
-    color: #007bff !important; /* Primary blue */
-    transition: all 0.3s ease-in-out; /* Smooth hover effect */
 }
 
 /* Hover Effect for Nav Links */
@@ -55,6 +50,7 @@ nav ul li {
     color: #0056b3 !important; /* Darker blue on hover */
     text-decoration: underline; /* Add underline on hover */
 }
+
 nav ul li a {
     color: white;
     text-decoration: none;
@@ -65,15 +61,26 @@ nav ul li a {
     font-weight: bold;
 }
 
-nav ul li a::after {
+/* Modern Hover Effect */
+nav ul li ::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 0%;
-    height: 4px;
-    background: #900909;
-    transition: all 0.3s ease;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+nav ul li ::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover::after,

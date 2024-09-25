@@ -47,15 +47,6 @@ $stmt = $pdo->prepare("SELECT * FROM faq ORDER BY created_at DESC");
 $stmt->execute();
 $faqs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch FAQ for editing if requested
-$edit_faq = null;
-if (isset($_GET['edit_id'])) {
-    $edit_id = $_GET['edit_id'];
-    $stmt = $pdo->prepare("SELECT * FROM faq WHERE id = ?");
-    $stmt->execute([$edit_id]);
-    $edit_faq = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
 // Fetch all user questions
 $stmt = $pdo->prepare("SELECT * FROM userquestions ORDER BY asked_at DESC");
 $stmt->execute();
@@ -70,75 +61,232 @@ $user_questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/faq_admin.css">
     <title>Manage FAQs and User Questions - MMU Resources</title>
+    <style>
+        /* Updated Modern Tabs Styling */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #4257e1; /* New Background Color */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            color: white; /* White text on tabs */
+        }
+
+        .tab.active {
+            background-color: #2d3ba8;
+            color: white;
+        }
+
+        .tab:hover {
+            background-color: #3339a4;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Form and Table Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+            font-weight: bold;
+            color: black; /* Black font for table headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Centered Submit Button */
+        .btn {
+            background-color: #1E90FF; /* New button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            margin: 20px auto 0 auto; /* Centered Button */
+        }
+
+        .btn:hover {
+            background-color: #007a53;
+        }
+
+        .btn-cancel {
+            background-color: #f44336;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e53935;
+        }
+
+        .btn-table {
+            background-color: #1E90FF; /* Blue for Edit button */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-table:hover {
+            background-color: #1c86ee;
+        }
+
+        .btn-cancel-table {
+            background-color: #f44336; /* Red for Delete button */
+        }
+
+        .btn-cancel-table:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
 <body>
     <?php include 'header.php'; ?>
     <div class="container">
-        <h1>User Questions</h1>
-        <table>
-            <tr>
-                <th>Question</th>
-                <th>Submitted At</th>
-                <th>Actions</th>
-            </tr>
-            <?php foreach ($user_questions as $question): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($question['question_text']); ?></td>
-                    <td><?php echo htmlspecialchars($question['asked_at']); ?></td>
-                    <td>
-                        <a href="faq_admin.php?delete_user_question_id=<?php echo $question['question_id']; ?>"><button type="button" class="btn-table btn-cancel-table">Delete</button></a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('addFaqTab')">Add FAQ</div>
+            <div class="tab" onclick="openTab('viewQuestionsTab')">View User Questions</div>
+            <div class="tab" onclick="openTab('manageFaqTab')">Manage FAQs</div>
+        </div>
 
-        <h1><?php echo $edit_faq ? 'Edit FAQ' : 'Add FAQ'; ?></h1>
-        <form method="post" action="faq_admin.php">
-            <input type="hidden" name="<?php echo $edit_faq ? 'edit_faq' : 'add_faq'; ?>" value="1">
-            <?php if ($edit_faq): ?>
-                <input type="hidden" name="edit_id" value="<?php echo $edit_faq['id']; ?>">
-            <?php endif; ?>
-            <div class="form-group">
-                <label for="question">Question:</label>
-                <textarea id="question" name="question" required><?php echo $edit_faq['question'] ?? ''; ?></textarea>
-            </div>
-            <div class="form-group">
-                <label for="answer">Answer:</label>
-                <textarea id="answer" name="answer" required><?php echo $edit_faq['answer'] ?? ''; ?></textarea>
-            </div>
-            <div class="btn-group">
-                <button type="submit" class="btn">Submit</button>
-                <?php if ($edit_faq): ?>
-                    <a href="faq_admin.php"><button type="button" class="btn btn-cancel">Cancel</button></a>
-                <?php endif; ?>
-            </div>
-        </form>
-
-        <h2>Existing FAQs</h2>
-        <table>
-            <tr>
-                <th>Question</th>
-                <th>Answer</th>
-                <th>Actions</th>
-            </tr>
-            <?php foreach ($faqs as $faq): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($faq['question']); ?></td>
-                    <td><?php echo htmlspecialchars($faq['answer']); ?></td>
-                    <td>
-                        <a href="faq_admin.php?edit_id=<?php echo $faq['id']; ?>"><button type="button" class="btn-table">Edit</button></a>
-                        <a href="faq_admin.php?delete_id=<?php echo $faq['id']; ?>"><button type="button" class="btn-table btn-cancel-table">Delete</button></a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php if ($success): ?>
-            <div class="alert success">
-                <div class="alert--content">
-                    <div class="alert--words"><?php echo htmlspecialchars($success); ?></div>
+        <!-- Tab Contents -->
+        <div id="addFaqTab" class="tab-content active">
+            <h2>Add FAQ</h2>
+            <form method="post" action="faq_admin.php">
+                <input type="hidden" name="add_faq" value="1">
+                <div class="form-group">
+                    <label for="question">Question:</label>
+                    <textarea id="question" name="question" required></textarea>
                 </div>
-            </div>
-        <?php endif; ?>
+                <div class="form-group">
+                    <label for="answer">Answer:</label>
+                    <textarea id="answer" name="answer" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="display: block; margin: 0 auto; background-color: green;">Submit</button> <!-- Centered Submit Button -->
+            </form>
+        </div>
+
+        <div id="viewQuestionsTab" class="tab-content">
+            <h2>User Questions</h2>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Submitted At</th>
+                    <th>Actions</th>
+                </tr>
+                <?php foreach ($user_questions as $question): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($question['question_text']); ?></td>
+                        <td><?php echo htmlspecialchars($question['asked_at']); ?></td>
+                        <td>
+                            <a href="faq_admin.php?delete_user_question_id=<?php echo $question['question_id']; ?>"><button type="button" class="btn btn-cancel-table" style="background-color: red;">Delete</button></a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div id="manageFaqTab" class="tab-content">
+            <h2>Manage FAQs</h2>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+                <?php foreach ($faqs as $faq): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($faq['question']); ?></td>
+                        <td><?php echo htmlspecialchars($faq['answer']); ?></td>
+                        <td>
+                            <a href="faq_admin.php?edit_id=<?php echo $faq['id']; ?>"><button type="button" class="btn-table">Edit</button></a>
+                            <a href="faq_admin.php?delete_id=<?php echo $faq['id']; ?>"><button type="button" class="btn btn-cancel-table" style="background-color: red;">Delete</button></a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
     </div>
+
+    <script>
+        // Function to open tab content
+        function openTab(tabId) {
+            var i, tabContent, tabs;
+
+            // Hide all tab contents
+            tabContent = document.getElementsByClassName('tab-content');
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove('active');
+            }
+
+            // Remove active class from all tabs
+            tabs = document.getElementsByClassName('tab');
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Show current tab and set it as active
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>

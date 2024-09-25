@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php foreach ($faqs as $faq): ?>
                         <li>
                             <p class="question"><?php echo nl2br(htmlspecialchars($faq['question'])); ?></p>
-                            <div class="answer"><strong>Answer:</strong> <?php echo nl2br(htmlspecialchars($faq['answer'])); ?></div>
+                            <div class="ansswer"><strong>Answer:</strong> <?php echo nl2br(htmlspecialchars($faq['answer'])); ?></div>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -71,7 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- Textarea for the user to input their question -->
                 <textarea id="question_text" name="question_text" required></textarea>
             </div>
-            <button type="submit" class="btn">Submit Question</button>
+            <div style="text-align: center;">
+                <button type="submit" class="btn" style="background-color: blue; color: white;">Submit Question</button>
+            </div></div>
         </form>
     </div>
     <?php include 'footer.php'; ?>

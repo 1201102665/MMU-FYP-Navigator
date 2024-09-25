@@ -15,8 +15,7 @@ $faculties = $stmt->fetchAll();
 
 $error = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
-    // Sanitize inputs to prevent XSS attacks
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
     $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
@@ -37,31 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
     } elseif (!in_array($coverFileType, $allowed_cover_types)) {
         $error = 'Only JPG, JPEG, PNG files for cover pictures are allowed';
     } elseif (!empty($title) && !empty($description) && !empty($price) && !empty($faculty_id) && !empty($file_path['name']) && !empty($cover_picture['name'])) {
-        // Handle resource file upload
         $target_dir = "resources/";
         $target_file = $target_dir . basename($file_path["name"]);
 
-        // Handle cover picture upload
         $cover_target_dir = "coverPictures/";
         $cover_target_file = $cover_target_dir . basename($cover_picture["name"]);
 
         if (move_uploaded_file($file_path["tmp_name"], $target_file) && move_uploaded_file($cover_picture["tmp_name"], $cover_target_file)) {
-            // Insert new resource into the database using prepared statements to prevent SQL injection
             $stmt = $pdo->prepare("INSERT INTO Resources (title, description, price, file_path, cover_picture, faculty_id, user_id, pending_acceptance) VALUES (?, ?, ?, ?, ?, ?, ?, 1)");
             $stmt->execute([$title, $description, $price, $target_file, $cover_target_file, $faculty_id, $_SESSION['user_id']]);
 
             $_SESSION['success'] = 'Resource uploaded successfully.';
-            header("Location: home.php"); // Redirect to the home page after successful upload
+            header("Location: home.php");
             exit();
         } else {
-            $error = 'Failed to upload files'; // Set error message if file upload fails
+            $error = 'Failed to upload files';
         }
     }
-    // Store file names in session if there's an error
     $_SESSION['file_path'] = $file_path['name'];
     $_SESSION['cover_picture'] = $cover_picture['name'];
 } else {
-    // Clear session file names on initial page load
     unset($_SESSION['file_path']);
     unset($_SESSION['cover_picture']);
 }
@@ -72,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/upload_resource.css">
     <title>Upload Resource - MMU Resources</title>
     <script>
@@ -88,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <div class="container">
+    <div class="form-container">
         <h2>Upload Resource</h2>
         <?php if ($error): ?>
             <div class="alert error">
@@ -97,22 +91,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
                 </div>
             </div>
         <?php endif; ?>
-        <form method="post" action="upload_resource.php" enctype="multipart/form-data" onsubmit="return validateForm()"> <!-- Form to handle file uploads -->
+        <form method="post" action="upload_resource.php" enctype="multipart/form-data" onsubmit="return validateForm()">
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required> <!-- Title input field -->
+                <input type="text" id="title" name="title" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea> <!-- Description input field -->
+                <textarea id="description" name="description" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="text" id="price" name="price" value="<?php echo isset($price) ? htmlspecialchars($price) : ''; ?>" required> <!-- Price input field -->
+                <input type="text" id="price" name="price" value="<?php echo isset($price) ? htmlspecialchars($price) : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="faculty">Faculty:</label>
-                <select id="faculty" name="faculty" required> <!-- Dropdown for selecting faculty -->
+                <select id="faculty" name="faculty" required>
                     <option value="">Select Faculty</option>
                     <?php foreach ($faculties as $faculty): ?>
                         <option value="<?php echo htmlspecialchars($faculty['faculty_id']); ?>" <?php echo isset($faculty_id) && $faculty_id == $faculty['faculty_id'] ? 'selected' : ''; ?>>
@@ -121,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group smaller-upload">
                 <label for="file_path">Resource File:</label>
                 <div class="drag-drop-container" id="file-drop-container">
                     <img src="design/cloud.png" alt="Upload File" class="upload-icon">
@@ -131,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
                     <p class="file-name" id="file-name"><?php echo isset($_SESSION['file_path']) ? htmlspecialchars($_SESSION['file_path']) : ''; ?></p>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group smaller-upload">
                 <label for="cover_picture">Cover Picture:</label>
                 <div class="drag-drop-container" id="cover-drop-container">
                     <img src="design/picture.png" alt="Upload Cover" class="upload-icon">
@@ -141,7 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Check if the form is submitted
                     <p class="file-name" id="cover-name"><?php echo isset($_SESSION['cover_picture']) ? htmlspecialchars($_SESSION['cover_picture']) : ''; ?></p>
                 </div>
             </div>
-            <button type="submit" class="btn">Upload Resource</button> <!-- Submit button -->
+            <div style="text-align: center;">
+                <button type="submit" class="btn">Upload Resource</button>
+            </div>
         </form>
     </div>
     <script src="javascript/upload_resource.js"></script>

@@ -1,85 +1,134 @@
-/* General styles for the container */
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
+.admin-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 1200px;
+}
 
-/* Table styles */
+.form-section, .questions-section, .faq-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    font-size: 16px;
+    margin-top: 10px;
 }
 
 table, th, td {
     border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 15px;
-    text-align: center;
+    padding: 8px;
 }
 
 th {
-    background-color: #4A148C;
-    color: white;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-/* Button styles */
-.btn-table, .btn-cancel-table {
-    background: #4A148C;
-    color: #fff;
-    padding: 10px 20px; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s;
+    text-align: left;
     font-weight: bold;
-    font-size: 16px; 
-    text-align: center; 
-    display: block;
-    width: 100%; 
-    margin-top: 10px; 
     
 }
 
-.btn-table:hover, .btn-cancel-table:hover {
-    background: #6A1B9A;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-cancel {
+    background-color: #f44336;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-cancel:hover {
+    background-color: #e53935;
+}
+
+.btn-table {
+    background-color: #4d3cc1;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
 }
 
 .btn-cancel-table {
-    background: #bbb;
+    background-color: #f44336;
 }
 
-.btn-cancel-table:hover {
-    background: #999;
+.btn-table:hover, .btn-cancel-table:hover {
+    opacity: 0.9;
 }
 
-/* Form styles */
-.form-group {
-    width: 100%; /* Full width form group */
-    margin-bottom: 15px;
+.alert {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 20px;
+.alert.success {
+    background-color: #dff0d8;
 }
 
-.btn-group {
-    flex-direction: column;
-    align-items: center;
+.alert--content {
+    font-size: 16px;
 }

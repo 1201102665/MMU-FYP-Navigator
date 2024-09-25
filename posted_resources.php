@@ -32,9 +32,9 @@ $resources = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all resources uploaded 
 </head>
 <body>
     <?php include 'header.php'; ?> 
-    <div class="container">
+    <div class="container" style="background-color: #4257e1;">
         <h1>My Uploaded Resources</h1> 
-        <div class="resources">
+        <div class="resources"></div>
             <?php if (count($resources) > 0): ?> <!-- Check if there are resources -->
                 <?php foreach ($resources as $resource): ?> 
                     <div class="resource">
