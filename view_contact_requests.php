@@ -24,7 +24,7 @@ try {
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/announcements.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <title>Contact Requests - Admin Panel</title>
 </head>
@@ -32,11 +32,14 @@ try {
 <body>
 <?php include 'header.php'; ?>
     <div class="container mt-5">
-        <h2>Contact Requests</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Contact Requests</h2>
+            
+        </div>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -48,7 +51,7 @@ try {
                 <?php if ($contact_requests): ?>
                     <?php foreach ($contact_requests as $request): ?>
                         <tr>
-                            <td><?= isset($request['id']) ? htmlspecialchars($request['id']) : 'N/A'; ?></td>
+                            
                             <td><?= isset($request['name']) ? htmlspecialchars($request['name']) : 'N/A'; ?></td>
                             <td><?= isset($request['email']) ? htmlspecialchars($request['email']) : 'N/A'; ?></td>
                             <td><?= isset($request['phone']) ? htmlspecialchars($request['phone']) : 'N/A'; ?></td>

@@ -60,10 +60,10 @@ if (isset($_SESSION['success'])) {
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <h1>Manage Resources</h1>
+    <h1 style="margin-top: 20px;"></h1>
 
     <div class="container">
-        <h2>Pending Approval</h2>
+        <h2><i class="bi bi-hourglass-split"></i> Pending Approval</h2>
         <?php if (count($pending_resources) > 0): ?>
             <table>
                 <thead>
@@ -87,12 +87,12 @@ if (isset($_SESSION['success'])) {
                             <td><?php echo htmlspecialchars($resource['username']); ?> (<?php echo htmlspecialchars($resource['email']); ?>)</td>
                             <td><?php echo htmlspecialchars($resource['faculty_name']); ?></td>
                             <td>
-                                <a href="<?php echo htmlspecialchars($resource['file_path']); ?>" class="btn">View</a>
-                                <a href="edit_resource.php?id=<?php echo $resource['resource_id']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="<?php echo htmlspecialchars($resource['file_path']); ?>" class="btn btn-primary">View</a>
+                                <a href="edit_resource.php?id=<?php echo $resource['resource_id']; ?>" class="btn btn-warning">Edit</a>
                                 <form method="post" action="manage_resources.php" style="display:inline;">
                                     <input type="hidden" name="resource_id" value="<?php echo $resource['resource_id']; ?>">
-                                    <button type="submit" name="approve" class="btn">Approve</button>
-                                    <button type="submit" name="delete" class="btn btn-cancel">Reject</button>
+                                    <button type="submit" name="approve" class="btn btn-secondary">Approve</button>
+                                    <button type="submit" name="delete" class="btn btn-danger">Reject</button>
                                 </form>
                             </td>
                         </tr>
@@ -140,11 +140,11 @@ if (isset($_SESSION['success'])) {
                             <td><?php echo htmlspecialchars($resource['username']); ?> (<?php echo htmlspecialchars($resource['email']); ?>)</td>
                             <td><?php echo htmlspecialchars($resource['faculty_name']); ?></td>
                             <td>
-                                <a href="<?php echo htmlspecialchars($resource['file_path']); ?>" class="btn">View</a>
-                                <a href="edit_resource.php?id=<?php echo $resource['resource_id']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="<?php echo htmlspecialchars($resource['file_path']); ?>" class="btn btn-secondary">View</a>
+                                <a href="edit_resource.php?id=<?php echo $resource['resource_id']; ?>" class="btn btn-warning">Edit</a>
                                 <form method="post" action="manage_resources.php" style="display:inline;">
                                     <input type="hidden" name="resource_id" value="<?php echo $resource['resource_id']; ?>">
-                                    <button type="submit" name="delete" class="btn btn-cancel">Delete</button>
+                                    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -155,5 +155,7 @@ if (isset($_SESSION['success'])) {
             <h4>No approved resources available.</h4>
         <?php endif; ?>
     </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

@@ -18,7 +18,9 @@ if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']){
     <?php include 'header.php'; ?>
     <div class="background-overlay">
         <div class="admin-panel">
-            <h1>Admin Panel</h1>
+            <h1 style="color: black; font-weight: bold;">
+                <i class="bi bi-speedometer2"></i> Admin Panel
+            </h1>
             <div class="admin-cards">
                 <a href="my_announcements.php" class="admin-card">
                     <div class="card-content">

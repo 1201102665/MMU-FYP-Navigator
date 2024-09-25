@@ -60,7 +60,7 @@ if (isset($_SESSION['success'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/resource_detail.css">
+    <link rel="stylesheet" href="css/resource_detail.css?id=2212">
     <title><?php echo htmlspecialchars($resource['title']); ?> - MMU Resources</title>
 </head>
 <body>
@@ -91,7 +91,7 @@ if (isset($_SESSION['success'])) {
             </tr>
         </table>
         <form method="post" action="">
-            <button type="submit" name="add_to_cart" class="btn" <?php echo $in_cart ? 'disabled' : ''; ?>>
+            <button type="submit" name="add_to_cart" class="btn btn-primary" <?php echo $in_cart ? 'disabled' : ''; ?>>
                 <?php echo $in_cart ? 'Added to Cart' : 'Add to Cart'; ?>
             </button>
         </form>
@@ -103,5 +103,7 @@ if (isset($_SESSION['success'])) {
             </div>
         <?php endif; ?>
     </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

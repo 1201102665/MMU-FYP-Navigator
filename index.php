@@ -668,7 +668,7 @@ session_start();
         <!-- Lecturer 2 -->
         <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 3">
+            <img src="design/1001039735.jpg" alt="Lecturer 3">
             <h5>Prof. Alan Watts</h5>
             <p>Data Science and Analytics expert, passionate about big data.</p>
             <p><strong>Email:</strong> alanwatts@example.com<br><strong>Phone:</strong> +1122334455</p>
@@ -677,7 +677,7 @@ session_start();
         <!-- Lecturer 3 -->
         <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="lecturer-card">
-            <img src="design/1991015769.png" alt="Lecturer 3">
+            <img src="design/1001060633.jpg" alt="Lecturer 3">
             <h5>Prof. Alan Watts</h5>
             <p>Data Science and Analytics expert, passionate about big data.</p>
             <p><strong>Email:</strong> alanwatts@example.com<br><strong>Phone:</strong> +1122334455</p>

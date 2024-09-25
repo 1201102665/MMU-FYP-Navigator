@@ -1,7 +1,7 @@
 
         .announcement {
             background: #fff;
-            color: #4A148C;
+            color: #000000;
             margin: 10px 0;
             padding: 10px;
             border: 1px solid #4A148C;
@@ -25,14 +25,14 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #4b46df;
+            background-color: #ffffff;
         }
 
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background: #1165ba;
+            background: #fffdfd;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 40px;

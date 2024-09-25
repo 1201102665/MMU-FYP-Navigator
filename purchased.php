@@ -33,7 +33,7 @@ if (isset($_SESSION['success'])) {
 <body>
     <?php include 'header.php'; ?> 
     <div class="container">
-        <h2>Your Purchased Items</h2> 
+        <h2><i class="bi bi-bag-check"></i> Your Purchased Items</h2>
         <?php if ($success): ?>
             <div class="alert success">
                 <div class="alert--content">
@@ -60,8 +60,8 @@ if (isset($_SESSION['success'])) {
                             <td><?php echo number_format($item['price'], 2); ?></td> 
                             <td><?php echo htmlspecialchars($item['purchase_date']); ?></td> 
                             <td>
-                                <a href="<?php echo htmlspecialchars($item['file_path']); ?>" class="btn">View</a>
-                                <a href="<?php echo htmlspecialchars($item['file_path']); ?>" download class="btn btn-download">Download</a> 
+                                <a href="<?php echo htmlspecialchars($item['file_path']); ?>" class="btn btn-primary">View</a>
+                                <a href="<?php echo htmlspecialchars($item['file_path']); ?>" download class="btn btn-secondary">Download</a> 
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -71,5 +71,7 @@ if (isset($_SESSION['success'])) {
             <h4>You have not purchased any items yet.</h4>
         <?php endif; ?>
     </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

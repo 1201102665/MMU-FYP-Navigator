@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Redirect to the contact page (or wherever you'd like)
-    header('Location: contact.php');
+    header('Location: index.php');
     exit();
 }
 ?>

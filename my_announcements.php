@@ -55,7 +55,7 @@ if (isset($_GET['edit_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/my_announcement.css">
+    <link rel="stylesheet" href="css/my_announcement.css?id=231">
     <title>My Announcements - MMU Resources</title>
 </head>
 <body>
@@ -71,14 +71,11 @@ if (isset($_GET['edit_id'])) {
         <?php endif; ?>
 
         <!-- Display create announcement button if not editing -->
-        <?php if (!$edit_announcement && count($announcements) > 0): ?>
-            <h2>My Announcements</h2>
-            <a href="create_announcement.php" class="btn">Create Announcement</a>
-        <?php endif; ?>
+     
         
         <!-- Form to edit an announcement -->
         <?php if ($edit_announcement): ?>
-            <h3>Edit Announcement</h3>
+            <h3><i class="bi bi-pencil-square"></i> Edit Announcement</h3>
             <form method="post" action="my_announcements.php">
                 <input type="hidden" name="edit_id" value="<?php echo htmlspecialchars($edit_announcement['announcement_id']); ?>">
                 <div class="form-group">
@@ -90,8 +87,8 @@ if (isset($_GET['edit_id'])) {
                     <textarea id="content" name="content" required><?php echo htmlspecialchars($edit_announcement['content']); ?></textarea>
                 </div>
                 <div class="btn-group">
-                    <button type="submit" class="btn">Update Announcement</button>
-                    <a href="my_announcements.php" class="btn btn-cancel">Cancel</a>
+                    <button type="submit" class="btn" style="background-color: #4CAF50; color: white;">Update Announcement</button>
+                    <a href="my_announcements.php" class="btn btn-cancel" style="background-color: #f44336; color: white;">Cancel</a>
                 </div>
             </form>
         <?php else: ?>
@@ -110,7 +107,12 @@ if (isset($_GET['edit_id'])) {
                             </form>
                         </div>
                     </div>
+                    
                 <?php endforeach; ?>
+                <?php if (!$edit_announcement && count($announcements) > 0): ?>
+            
+            <a href="create_announcement.php" class="btn" style="background-color: grey;">Create Announcement</a>
+        <?php endif; ?>
             <?php else: ?>
                 <!-- No announcements available -->
                 <div class="no-announcements">
@@ -120,5 +122,7 @@ if (isset($_GET['edit_id'])) {
             <?php endif; ?>
         <?php endif; ?>
     </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

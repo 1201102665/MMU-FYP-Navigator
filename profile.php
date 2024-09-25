@@ -178,11 +178,13 @@ if (!$users) {
                     <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••">
                 </div>
                 <div class="btn-group">
-                    <button type="submit" class="btn">Update Profile</button> <!-- Submit button to update profile -->
+                    <button type="submit" class="btn" style="background-color: blue; color: white;">Update Profile</button> <!-- Submit button to update profile -->
                     <button type="button" class="btn-cancel" onclick="window.location.href='<?php echo $_SESSION['is_admin'] ? 'adminpanel.php' : 'home.php'; ?>'">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

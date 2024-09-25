@@ -11,7 +11,7 @@ $email = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['signup'])) {
         // Sign Up Logic
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS); // Updated
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->execute([':username' => $username, ':email' => $email]);
                 if ($stmt->fetch()) {
                     $_SESSION['error'] = 'Username or email already exists';
+                    header("Location: index.php");
                 } else {
                     $target_file = "profilePicture/super/default.png"; // Default profile picture setting
                     if (!empty($profile_picture['name'])) {
@@ -38,9 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             // Attempt to move uploaded file to target directory
                             if (!move_uploaded_file($profile_picture["tmp_name"], $target_file)) {
                                 $_SESSION['error'] = 'Failed to upload profile picture';
+                                header("Location: index.php");
                             }
                         } else {
                             $_SESSION['error'] = 'Only JPG, JPEG, PNG, and GIF files are allowed';
+                            header("Location: index.php");
                         }
                     }
                     // Inserting user into database
@@ -56,9 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             } else {
                 $_SESSION['error'] = 'Passwords do not match';
+                header("Location: index.php");
             }
         } else {
             $_SESSION['error'] = 'Please fill in all fields';
+            header("Location: index.php");
         }
         $is_signup = true;
     } else if (isset($_POST['signin'])) {

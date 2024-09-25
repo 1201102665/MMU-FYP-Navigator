@@ -111,5 +111,7 @@ $total_amount = $_SESSION['total_amount']; // Retrieve the total amount from the
         </form>
     </div>
     <script src="javascript/payment.js"></script>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

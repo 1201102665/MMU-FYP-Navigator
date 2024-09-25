@@ -67,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/upload_resource.css">
+    <link rel="stylesheet" href="css/upload_resource.css?id=123">
+  
     <title>Upload Resource - MMU Resources</title>
     <script>
         function validateForm() {
@@ -82,8 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <?php include 'header.php'; ?>
-    <div class="form-container">
-        <h2>Upload Resource</h2>
+    <div class="form-container-fluid" style="margin-top: 30px;"></div>
+    <h2>Upload Resource 
+            <span class="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="Fill in all required fields.
+Set an affordable price for students.
+Upload your resource file and cover image.
+Double-check before submitting!">
+                <i class="bi bi-question-circle"></i>
+            </span>
+       
+        </h2>
         <?php if ($error): ?>
             <div class="alert error">
                 <div class="alert--content">
@@ -140,6 +149,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    
+    <script>
+        // Initialize Bootstrap tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
     <script src="javascript/upload_resource.js"></script>
+    <?php include 'footer.php'; ?>
+
 </body>
 </html>

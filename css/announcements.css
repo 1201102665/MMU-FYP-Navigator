@@ -9,17 +9,18 @@ body {
     width: 85%;
     margin: 40px auto;
     padding: 20px;
-    background: #4257e1;
+    background: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
 h2 {
     text-align: center;
-    color: #0606a4;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 20px;
 }
+
 
 .error {
     color: red;
@@ -43,7 +44,7 @@ h2 {
 }
 
 .announcement h3 {
-    color: #0606a4;
+    color: #e5e5f0;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -57,7 +58,7 @@ h2 {
 .announcement small {
     display: block;
     margin-bottom: 10px;
-    color: #999;
+    color: #000000;
 }
 
 h4 {

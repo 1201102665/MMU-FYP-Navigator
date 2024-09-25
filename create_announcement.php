@@ -28,44 +28,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/create_announcement.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <title>Create Announcement - MMU Resources</title>
 </head>
-<body>
+<body style="background-color: white;"></body>
+    
     <?php include 'header.php'; ?>
-    <div class="container">
-        <h2>Create Announcement</h2>
+
+    <div class="container mt-5">
+        <h2 class="mb-4"><i class="bi bi-megaphone"></i> Create Announcement</h2>
+
         <?php if ($success): ?>
-            <div class="alert success">
-                <div class="alert--content">
-                    <div class="alert--words"><?php echo htmlspecialchars($success); ?></div>
-                </div>
+            <div class="alert alert-success">
+                <?php echo htmlspecialchars($success); ?>
             </div>
         <?php endif; ?>
+
         <form method="post" action="create_announcement.php">
-            <div class="form-group">
-                <label for="title">Title:</label>
-                <!-- Input field for the announcement title -->
-                <input type="text" id="title" name="title" required>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Enter announcement title" required>
             </div>
-            <div class="form-group">
-                <label for="content">Content:</label>
-                <!-- Textarea for the announcement content -->
-                <textarea id="content" name="content" required></textarea>
+
+            <div class="mb-3">
+                <label for="content" class="form-label">Content:</label>
+                <textarea id="content" name="content" class="form-control" rows="5" placeholder="Enter announcement content" required></textarea>
             </div>
-            <div class="btn-group">
-                <!-- Submit button to create the announcement -->
-                <button type="submit" class="btn">Create Announcement</button>
-                <!-- Link to go back to My Announcements page -->
-                <a href="my_announcements.php" class="btn btn-secondary">Back to My Announcements</a>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create Announcement
+                </button>
+                <a href="my_announcements.php" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to My Announcements
+                </a>
             </div>
         </form>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

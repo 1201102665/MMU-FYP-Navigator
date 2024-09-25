@@ -26,7 +26,10 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all feedbacks as an ass
 <body>
     <?php include 'header.php'; // Include the header ?>
     <div class="container">
-        <h2>Users Feedbacks</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Users Feedbacks</h2>
+        <i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
+    </div>
         <div class="feedback-list">
             <?php if (count($feedbacks) > 0): // Check if there are feedbacks ?>
                 <ul>
